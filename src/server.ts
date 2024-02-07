@@ -27,4 +27,9 @@ app.use("/api", protect, router);
 
 app.post("/user", createNewUser);
 app.post("/login", signIn);
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: "Something went wrong" });
+});
 export default app;

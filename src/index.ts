@@ -1,8 +1,10 @@
-import app from "./server";
 import * as dotenv from "dotenv";
+import app from "./server";
 
 dotenv.config();
 
-app.listen(3001, () => {
+import config from "./config";
+
+app.listen(config.port, () => {
   console.log("tomek--- is listening at 3001");
 });
