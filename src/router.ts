@@ -1,17 +1,15 @@
 import { Router } from "express";
-
+import { body } from "express-validator";
+import { createProduct, getProducts, updateProduct } from "./handlers/product";
 const router = Router();
 
 /**
  * Product
  */
-router.get("/product", (req, res) => {
-  res.status(200);
-  res.json({ message: req.shhhh });
-});
+router.get("/product", getProducts);
 router.get("/product/:id", (req, res) => {});
-router.put("/product/:id", (req, res) => {});
-router.post("/product/:id", (req, res) => {});
+router.put("/product/:id", body("name").exists().isAlphanumeric(), updateProduct);
+router.post("/product", createProduct);
 router.delete("/product/:id", (req, res) => {});
 
 /**

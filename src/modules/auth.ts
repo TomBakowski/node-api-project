@@ -25,7 +25,7 @@ export const protect = (req, res, next) => {
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET);
     req.user = user;
-    res.status(200).json({ message: "You are authorized" });
+    next();
   } catch (error) {
     console.error(error);
     res.status(401).json({ message: "Not valid token" });
